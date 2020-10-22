@@ -12,6 +12,12 @@ interface Nav {
 })
 export class MenuComponent{
 
+    public isCollapsed: boolean;
+
+    constructor(){
+        this.isCollapsed = true;
+    }
+
     navs: Nav[] = [
         {
           link: '/home',
