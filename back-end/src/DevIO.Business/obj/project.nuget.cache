@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "JCiGLRV1lGIsZPlNMKngZSafCYu/En3+tty8LksL6se9X36/nt4C32jp5z66i114eeZEaGaxX3a+m6AbV2qA/Q==",
+  "success": true,
+  "projectFilePath": "D:\\Users\\masan\\Documents\\GitHub\\Angular_produto_fornecedor\\back-end\\src\\DevIO.Business\\DevIO.Business.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\masan\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
+    "C:\\Users\\masan\\.nuget\\packages\\system.componentmodel.annotations\\4.4.1\\system.componentmodel.annotations.4.4.1.nupkg.sha512"
+  ],
+  "logs": []
+}

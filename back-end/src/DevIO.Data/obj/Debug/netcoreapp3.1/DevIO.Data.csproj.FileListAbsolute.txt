@@ -1,0 +1,12 @@
+D:\Users\masan\Documents\GitHub\Angular_produto_fornecedor\back-end\src\DevIO.Data\bin\Debug\netcoreapp3.1\DevIO.Data.deps.json
+D:\Users\masan\Documents\GitHub\Angular_produto_fornecedor\back-end\src\DevIO.Data\bin\Debug\netcoreapp3.1\DevIO.Data.dll
+D:\Users\masan\Documents\GitHub\Angular_produto_fornecedor\back-end\src\DevIO.Data\bin\Debug\netcoreapp3.1\DevIO.Data.pdb
+D:\Users\masan\Documents\GitHub\Angular_produto_fornecedor\back-end\src\DevIO.Data\bin\Debug\netcoreapp3.1\DevIO.Business.dll
+D:\Users\masan\Documents\GitHub\Angular_produto_fornecedor\back-end\src\DevIO.Data\bin\Debug\netcoreapp3.1\DevIO.Business.pdb
+D:\Users\masan\Documents\GitHub\Angular_produto_fornecedor\back-end\src\DevIO.Data\obj\Debug\netcoreapp3.1\DevIO.Data.csprojAssemblyReference.cache
+D:\Users\masan\Documents\GitHub\Angular_produto_fornecedor\back-end\src\DevIO.Data\obj\Debug\netcoreapp3.1\DevIO.Data.AssemblyInfoInputs.cache
+D:\Users\masan\Documents\GitHub\Angular_produto_fornecedor\back-end\src\DevIO.Data\obj\Debug\netcoreapp3.1\DevIO.Data.AssemblyInfo.cs
+D:\Users\masan\Documents\GitHub\Angular_produto_fornecedor\back-end\src\DevIO.Data\obj\Debug\netcoreapp3.1\DevIO.Data.csproj.CoreCompileInputs.cache
+D:\Users\masan\Documents\GitHub\Angular_produto_fornecedor\back-end\src\DevIO.Data\obj\Debug\netcoreapp3.1\DevIO.Data.csproj.CopyComplete
+D:\Users\masan\Documents\GitHub\Angular_produto_fornecedor\back-end\src\DevIO.Data\obj\Debug\netcoreapp3.1\DevIO.Data.dll
+D:\Users\masan\Documents\GitHub\Angular_produto_fornecedor\back-end\src\DevIO.Data\obj\Debug\netcoreapp3.1\DevIO.Data.pdb
