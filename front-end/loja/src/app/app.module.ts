@@ -20,7 +20,12 @@ import { AppRoutingModule } from './app-routing.module';
     NavegacaoModule,
     NgbModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      progressBar: true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
