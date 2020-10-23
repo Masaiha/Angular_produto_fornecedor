@@ -26,6 +26,8 @@ export class CadastroComponent implements OnInit, AfterViewInit {
   genericValidator: GenericValidator;
   displayMessage: DisplayMessage = {};
 
+  mudancasNaoSalvas: boolean;
+
   constructor(private fb: FormBuilder,
               private contaService: ContaService,
               private router: Router,
@@ -70,6 +72,8 @@ export class CadastroComponent implements OnInit, AfterViewInit {
     merge(...controlBlur).subscribe(() => {
       this.displayMessage = this.genericValidator.MessageProcess(this.cadastroForm);
     })
+
+    this.mudancasNaoSalvas = true;
   }
 
   adicionarConta() {
@@ -81,6 +85,8 @@ export class CadastroComponent implements OnInit, AfterViewInit {
           sucesso => { this.processarSucesso(sucesso) },
           falha => { this.processarFalhar(falha) }
         )
+
+      this.mudancasNaoSalvas = false;
     }
   }
 
@@ -94,7 +100,7 @@ export class CadastroComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/home']);
 
     this.toastr.success('Cadastrado realizado com sucesso!', 'Seja bem vindo!');
-    
+
     // let toastr = this.toastr.success('Cadastrado realizado com sucesso!', 'Seja bem vindo!');
     
     // toastr.onHidden.subscribe(() => {
