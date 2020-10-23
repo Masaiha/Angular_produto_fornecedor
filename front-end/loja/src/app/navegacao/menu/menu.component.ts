@@ -25,13 +25,13 @@ export class MenuComponent{
           admin: false
         },
         {
-          link: '/fornecedores',
-          nome: 'Fornecedores',
+          link: '/produtos',
+          nome: 'Produtos',
           admin: false
         },
         {
-          link: '/produtos',
-          nome: 'Produtos',
+          link: '/fornecedores/listar-todos',
+          nome: 'Fornecedores',
           admin: false
         },
       ]
