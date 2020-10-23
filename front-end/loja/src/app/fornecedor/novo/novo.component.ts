@@ -71,8 +71,20 @@ export class NovoComponent implements OnInit {
       nome: ['', [Validators.required]],
       documento: ['', [Validators.required]],
       ativo: ['', [Validators.required]],
-      tipoFornecedor: ['', [Validators.required]]     
+      tipoFornecedor: ['', [Validators.required]],
+
+      endereco: this.fb.group({
+        logradouro: ['',[Validators.required]],
+        numero: ['',[Validators.required]],
+        complemento: ['',[]],
+        bairro: ['',[Validators.required]],
+        cep: ['',[Validators.required]],
+        cidade: ['',[Validators.required]],
+        estado: ['',[Validators.required]]
+      })
     });
+
+    this.fornecedorForm.patchValue({ tipoFornecedor: '1', ativo: true })
   }
 
   ngAfterViewInit(): void {
