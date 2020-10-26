@@ -22,10 +22,13 @@
     "@angular/router": "~10.1.2",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "angular-localizer": "^1.1.0",
+    "angular2-text-mask": "^9.0.0",
     "bootstrap": "^4.5.0",
+    "ng-brazil": "^2.2.2",
     "ngx-custom-validators": "^10.0.0",
     "ngx-toastr": "^13.1.0",
     "rxjs": "~6.6.0",
+    "text-mask-addons": "^3.8.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControlName, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControlName, AbstractControl, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Observable, fromEvent, merge } from 'rxjs';
@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ValidationMessages, GenericValidator, DisplayMessage } from 'src/app/utils/generic-form-validation';
 import { Fornecedor } from '../models/fornecedor';
 import { FornecedorService } from '../services/fornecedor.service';
+import { MASKS, NgBrazilValidators } from 'ng-brazil';
 
 @Component({
   selector: 'app-novo',
@@ -25,8 +26,11 @@ export class NovoComponent implements OnInit {
   validationMessages: ValidationMessages;
   genericValidator: GenericValidator;
   displayMessage: DisplayMessage = {};
-
+  
   formResult: string = '';
+  textoDocumento: string = 'CPF (requerido)';
+
+  MASKS = MASKS;
 
   mudancasNaoSalvas: boolean;
 
@@ -41,6 +45,8 @@ export class NovoComponent implements OnInit {
       },
       documento: {
         required: 'Informe o Documento',
+        cpf: 'CPF inválido',
+        cnpj: 'CNPJ inválido'
       },
       logradouro: {
         required: 'Informe o Logradouro',
@@ -52,7 +58,8 @@ export class NovoComponent implements OnInit {
         required: 'Informe o Bairro',
       },
       cep: {
-        required: 'Informe o CEP'
+        required: 'Informe o CEP',
+        cep: 'CEP em formato inválido'
       },
       cidade: {
         required: 'Informe a Cidade',
@@ -78,7 +85,7 @@ export class NovoComponent implements OnInit {
         numero: ['',[Validators.required]],
         complemento: ['',[]],
         bairro: ['',[Validators.required]],
-        cep: ['',[Validators.required]],
+        cep: ['',[Validators.required, NgBrazilValidators.cep]],
         cidade: ['',[Validators.required]],
         estado: ['',[Validators.required]]
       })
@@ -88,16 +95,54 @@ export class NovoComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
+
+    this.tipoFornecedorForm().valueChanges
+      .subscribe(() => {
+        this.trocarValidacaoDocumento();
+        this.configurarElementosValidacao();
+        this.validarFormulario();
+      });
+
+    this.configurarElementosValidacao();
+  }
+
+  configurarElementosValidacao() {
     let controlBlurs: Observable<any>[] = this.formInputElements
       .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
 
     merge(...controlBlurs).subscribe(() => {
-      this.displayMessage = this.genericValidator.MessageProcess(this.fornecedorForm);
-      this.mudancasNaoSalvas = true;
+      this.validarFormulario();
     });
   }
 
-   adicionarFornecedor() {
+  validarFormulario() {
+    this.displayMessage = this.genericValidator.MessageProcess(this.fornecedorForm);
+    this.mudancasNaoSalvas = true;
+  }
+
+  trocarValidacaoDocumento() {
+    this.documento().clearValidators();
+
+    if(this.tipoFornecedorForm().value === "1"){
+      this.documento().setValidators([Validators.required, NgBrazilValidators.cpf]);
+      this.textoDocumento = "CPF (requerido)";
+    }
+    else{
+      this.documento().setValidators([Validators.required, NgBrazilValidators.cnpj]);
+      this.textoDocumento = "CNPJ (requerido)";
+    }
+
+  }
+
+  tipoFornecedorForm(): AbstractControl {
+    return this.fornecedorForm.get('tipoFornecedor');
+  }
+
+  documento(): AbstractControl {
+    return this.fornecedorForm.get('documento');
+  }
+
+  adicionarFornecedor() {
     if (this.fornecedorForm.dirty && this.fornecedorForm.valid) {
       this.fornecedor = Object.assign({}, this.fornecedor, this.fornecedorForm.value);
       this.formResult = JSON.stringify(this.fornecedor);
