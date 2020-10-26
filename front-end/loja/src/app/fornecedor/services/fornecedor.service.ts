@@ -6,6 +6,8 @@ import { catchError } from "rxjs/operators";
 
 import { Fornecedor } from '../models/fornecedor';
 import { BaseService } from 'src/app/services/base.service';
+import { CepConsulta } from '../models/endereco';
+import { StringUtils } from 'src/app/utils/stringUtils';
 
 @Injectable()
 export class FornecedorService extends BaseService {
@@ -41,4 +43,13 @@ export class FornecedorService extends BaseService {
     excluirFornecedor(id: string): Observable<Fornecedor> {
         return new Observable<Fornecedor>();
     }    
+
+    consultarCep(cep: string): Observable<CepConsulta> {
+        cep = StringUtils.somenteNumero(cep);
+
+        if(cep.length < 8) return;
+
+        return this.http.get<CepConsulta>(`http://viacep.com.br/ws/${cep}/json`)
+        .pipe(catchError(super.ErrorService))
+    }
 }

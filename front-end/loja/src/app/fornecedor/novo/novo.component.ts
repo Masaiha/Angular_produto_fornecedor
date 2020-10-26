@@ -10,6 +10,7 @@ import { ValidationMessages, GenericValidator, DisplayMessage } from 'src/app/ut
 import { Fornecedor } from '../models/fornecedor';
 import { FornecedorService } from '../services/fornecedor.service';
 import { MASKS, NgBrazilValidators } from 'ng-brazil';
+import { CepConsulta } from '../models/endereco';
 
 @Component({
   selector: 'app-novo',
@@ -140,6 +141,26 @@ export class NovoComponent implements OnInit {
 
   documento(): AbstractControl {
     return this.fornecedorForm.get('documento');
+  }
+
+  buscarCep(cep: string) {
+    this.fornecedorService.consultarCep(cep)
+      .subscribe(
+        cepRetorno => this.preencherEnderecoConsulta(cepRetorno),
+        erro => this.errors.push(erro)
+      );
+  }
+
+  preencherEnderecoConsulta(cep: CepConsulta) {
+    this.fornecedorForm.patchValue({
+      endereco: {
+        logradouro: cep.logradouro,
+        bairro: cep.bairro,
+        cep: cep.cep,
+        cidade: cep.localidade,
+        estado: cep.uf
+      }
+    })
   }
 
   adicionarFornecedor() {
