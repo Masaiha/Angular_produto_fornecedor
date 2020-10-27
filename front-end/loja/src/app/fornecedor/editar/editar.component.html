@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <label class="control-label">Documento</label>
                     <div>
-                        <input class="form-control" id="documento" type="text" placeholder="requerido" [ngClass]="{'is-invalid': displayMessage.documento }" />
+                        <input class="form-control" id="documento" type="text" placeholder="requerido" formControlName="documento" [ngClass]="{'is-invalid': displayMessage.documento }" />
 
                         <span class="text-danger" *ngIf="displayMessage.documento">
                             <p [innerHTML]="displayMessage.documento"></p>
@@ -123,7 +123,7 @@
                             </td>
                             <td>
                                 <a class="btn btn-info">
-                                    <span title="Editar" class="fa fa-pencil-alt"></span>
+                                    <span title="Editar" class="fa fa-pencil"></span>
                                 </a>
                             </td>
                         </tr>
