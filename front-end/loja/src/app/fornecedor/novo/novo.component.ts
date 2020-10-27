@@ -11,6 +11,8 @@ import { Fornecedor } from '../models/fornecedor';
 import { FornecedorService } from '../services/fornecedor.service';
 import { MASKS, NgBrazilValidators } from 'ng-brazil';
 import { CepConsulta } from '../models/endereco';
+import { StringUtils } from 'src/app/utils/stringUtils';
+import { number } from 'ngx-custom-validators/src/app/number/validator';
 
 @Component({
   selector: 'app-novo',
@@ -165,18 +167,23 @@ export class NovoComponent implements OnInit {
 
   adicionarFornecedor() {
     if (this.fornecedorForm.dirty && this.fornecedorForm.valid) {
+
       this.fornecedor = Object.assign({}, this.fornecedor, this.fornecedorForm.value);
-      this.formResult = JSON.stringify(this.fornecedor);
-
+      
+      this.fornecedor.tipoFornecedor = Number.parseInt(this.fornecedor.tipoFornecedor.toString());
+      this.fornecedor.endereco.cep = StringUtils.somenteNumero(this.fornecedor.endereco.cep);
+      this.fornecedor.documento = StringUtils.somenteNumero(this.fornecedor.documento);
+      
+      console.log(this.fornecedor)
       this.fornecedorService.novoFornecedor(this.fornecedor)
-        .subscribe(
-          sucesso => { this.processarSucesso(sucesso) },
-          falha => { this.processarFalha(falha) }
+      .subscribe(
+        sucesso => { this.processarSucesso(sucesso) },
+        falha => { this.processarFalha(falha) }
         );
+      }
 
-      this.mudancasNaoSalvas = false;
+      this.formResult = JSON.stringify(this.fornecedor); // somente para verificação no HTML
     }
-  }
 
   processarSucesso(response: any) {
     this.fornecedorForm.reset();
@@ -191,7 +198,8 @@ export class NovoComponent implements OnInit {
   }
 
   processarFalha(fail: any) {
+    console.log("fail: ", fail)
     this.errors = fail.error.errors;
-    this.toastr.error('Ocorreu um erro!', 'Opa :(');
+    this.toastr.error('Ocorreu um erro! ', 'Opa :(');
   }
 }

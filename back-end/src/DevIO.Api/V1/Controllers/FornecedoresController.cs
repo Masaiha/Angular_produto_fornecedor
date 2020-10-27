@@ -52,9 +52,9 @@ namespace DevIO.Api.V1.Controllers
             return fornecedor;
         }
 
-        [ClaimsAuthorize("Fornecedor","Adicionar")]
+       // [ClaimsAuthorize("Fornecedor","Adicionar")]
         [HttpPost]
-        public async Task<ActionResult<FornecedorViewModel>> Adicionar(FornecedorViewModel fornecedorViewModel)
+        public async Task<ActionResult<FornecedorViewModel>> Adicionar([FromBody] FornecedorViewModel fornecedorViewModel)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 

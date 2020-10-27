@@ -40,6 +40,13 @@ namespace DevIO.Api.Configuration
                         .AllowAnyMethod()
                         .AllowAnyHeader());
 
+                options.AddPolicy("SelfHosting",
+                    builder =>
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+
 
                 options.AddPolicy("Production",
                     builder =>
