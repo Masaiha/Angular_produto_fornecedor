@@ -26,6 +26,7 @@
     "bootstrap": "^4.5.0",
     "ng-brazil": "^2.2.2",
     "ngx-custom-validators": "^10.0.0",
+    "ngx-spinner": "^10.0.1",
     "ngx-toastr": "^13.1.0",
     "rxjs": "~6.6.0",
     "text-mask-addons": "^3.8.0",
